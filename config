@@ -1,0 +1,6 @@
+IMG_NAME=piname
+FIRST_USER_NAME=op
+WPA_ESSID="the ssid"
+WPA_PASSWORD="the password"
+ENABLE_SSH=1
+STAGE_LIST="stage0 stage1 stage2 stagecus"

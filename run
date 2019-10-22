@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ $(uname) = 'Darwin' ]; then
+    echo "Error: This script won't work on Macs"
+    exit 1
+fi
+
+for i in ./config*; do
+    if [ $i = ./config ]; then
+        ./build.sh
+        # caching
+        touch stage2/SKIP_IMAGES
+        touch stage0/SKIP stage1/SKIP stage2/SKIP
+    else
+        ./build.sh -c $i
+    fi
+done
+
