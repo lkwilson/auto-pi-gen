@@ -24,7 +24,9 @@ WPA_ESSID="Wifi name"
 WPA_PASSWORD="Wifi Password"
 ```
 
-5. Then, run `dockerrun` from the root of the whole repository. This step
+5. You might have to run `prep` if you are running the script for the second time.
+
+6. Then, run `dockerrun` from the root of the whole repository. This step
    starts the build and can take hours.
 
 # Lazy?
@@ -53,5 +55,5 @@ bash dockerrun
 # Don't want to use Docker?
 
 You can use `run` instead of `dockerrun`, but you have to be on a Debian
-based Linux system, e.g., Ubuntu. It's also not well untested and messy. I
+based Linux system, e.g., Ubuntu. It's also messy and not well tested. I
 don't recommend this.
