@@ -45,6 +45,8 @@ bash dockerrun
 
 # Script is failing?
 
+- Restart it with `export CONTINUE=1; bash dockerrun`
+- See the pi-gen documentation (it'll have tips like how to connect to the docker container)
 - **On OS X, some commands might fail.** Install them with `homebrew`. Known requirements:
 
   - `realpath` from `coreutils` is required
