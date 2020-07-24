@@ -24,7 +24,7 @@ WPA_ESSID="Wifi name"
 WPA_PASSWORD="Wifi Password"
 ```
 
-5. You might have to run `prep` if you are running the script for the second time.
+5. You might have to run `prep` if you are running the script for the first time.
 
 6. Then, run `dockerrun` from the root of the whole repository. This step
    starts the build and can take hours.
