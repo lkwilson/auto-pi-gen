@@ -9,11 +9,30 @@ which realpath &>/dev/null || {
     exit 1
 }
 
-cd pi-gen
+cd "$(dirname "$BASH_SOURCE")"
+
+cd copy_in
+for i in *; do
+    rm -rf "../pi-gen/$i"
+    cp -r $i ../pi-gen
+done
+
+cd ../pi-gen
+
+rm -f stage2/EXPORT_NOOBS
+touch stage3/SKIP stage4/SKIP stage5/SKIP
+touch stage4/SKIP_IMAGES stage5/SKIP_IMAGES
+
+if [ -f ./config ]; then
+    ./build-docker.sh || {
+        echo "Failed to build on ./config"
+        exit 1
+    }
+    touch stage2/SKIP_IMAGES stage0/SKIP stage1/SKIP stage2/SKIP
+fi
+
 for i in ./config*; do
-    if [ $i = ./config ]; then
-        ./build-docker.sh && touch stage2/SKIP_IMAGES stage0/SKIP stage1/SKIP stage2/SKIP
-    else
+    if [ "$i" != ./config ]; then
         ./build-docker.sh -c $i
     fi
 done
