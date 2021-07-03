@@ -1,6 +1,24 @@
-IMG_NAME=piname
+#!/usr/bin/env bash
+
+# System
+IMG_NAME=mypi
+LOCALE_DEFAULT="en_US.UTF-8"
+TARGET_HOSTNAME=rpi7
+TIMEZONE_DEFAULT="America/Denver"
+
+# User
 FIRST_USER_NAME=op
-WPA_ESSID="the ssid"
-WPA_PASSWORD="the password"
+FIRST_USER_PASS=raspberry7
+
+# Wifi
+WPA_ESSID="The ssid"
+WPA_PASSWORD="ssid pass"
+WPA_COUNTRY=US
+
+# SSH
 ENABLE_SSH=1
+#PUBKEY_SSH_FIRST_USER=~/.ssh/id_rsa.pub
+#PUBKEY_ONLY_SSH=0
+
+# Build
 STAGE_LIST="stage0 stage1 stage2 stagecus"
