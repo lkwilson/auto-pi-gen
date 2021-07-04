@@ -8,11 +8,11 @@ TIMEZONE_DEFAULT="America/Denver"
 
 # User
 FIRST_USER_NAME=op
-FIRST_USER_PASS=raspberry7
+FIRST_USER_PASS=raspberry
 
 # Wifi
-WPA_ESSID="The ssid"
-WPA_PASSWORD="ssid pass"
+WPA_ESSID=ssid
+WPA_PASSWORD=pass
 WPA_COUNTRY=US
 
 # SSH
@@ -21,4 +21,4 @@ ENABLE_SSH=1
 #PUBKEY_ONLY_SSH=0
 
 # Build
-STAGE_LIST="stage0 stage1 stage2 stagecus"
+STAGE_LIST="stage0 stage1 stage2"
