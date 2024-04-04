@@ -1,23 +1,27 @@
 #!/usr/bin/env bash
 
 # System
+# CHANGE
 IMG_NAME=mypi
 LOCALE_DEFAULT="en_US.UTF-8"
-TARGET_HOSTNAME=rpi7
+# CHANGE
+TARGET_HOSTNAME=mypi
 TIMEZONE_DEFAULT="America/Denver"
 
 # User
+# CHANGE
 FIRST_USER_NAME=op
+# CHANGE
 FIRST_USER_PASS=raspberry
+DISABLE_FIRST_BOOT_USER_RENAME=1
 
 # Wifi
-WPA_ESSID=ssid
-WPA_PASSWORD=pass
 WPA_COUNTRY=US
 
 # SSH
 ENABLE_SSH=1
-#PUBKEY_SSH_FIRST_USER=~/.ssh/id_rsa.pub
+# CHANGE
+PUBKEY_SSH_FIRST_USER="ssh-ed25519 <pub key> <key name>"
 #PUBKEY_ONLY_SSH=0
 
 # Build
