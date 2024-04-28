@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+error() {
+  echo "Error: $*"
+  exit 1
+}
+
+which docker &>/dev/null || error "docker isn't installed"
+which realpath &>/dev/null || error "realpath isn't installed. Install coreutils with homebrew."
+cd "$(dirname "$BASH_SOURCE")" || error "Failed to find auto-pi-gen's dir"
+
+cp copy_in/config pi-gen/config || error "Failed to copy config file to pi-gen"
+target_wpa_supp=pi-gen/stage2/02-net-tweaks/files/wpa_supplicant.conf
+[ -f "$target_wpa_supp" ] || error "$target_wpa_supp was missing! Did pi-gen move it?"
+cp copy_in/wpa_supplicant.conf "$target_wpa_supp" || error "Failed to copy wpa supplicant to pi-gen"
+
+cd pi-gen || error "Failed to find pi-gen's dir"
+
+touch stage3/SKIP stage4/SKIP stage5/SKIP || error "Failed to add stage 3-5 skip"
+touch stage4/SKIP_IMAGES stage5/SKIP_IMAGES || error "Failed to add stage 4-5 image skip"
+./build-docker.sh || error "Failed to build on ./config"
