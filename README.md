@@ -33,12 +33,12 @@ Wifi comes from the wpa_supplicant, so use wpa_passphrase
 wpa_passphrase <ssid> <pass> >> ./copy_in/wpa_supplicant.conf
 ```
 
-6. Then, run `dockerrun` from the root of the whole repository. This step
+6. Then, run `build` from the root of the whole repository. This step
    starts the build and can take hours.
 
 # How to rerun / cleanup
 
-Stop and remove any running containers
+Stop and remove any pi-gen containers (eg pigen_work)
 
 ```
 docker ps -a
@@ -46,13 +46,15 @@ docker stop <pi-container-id>  # if not stopped
 docker rm <pi-container-id>
 ```
 
-Delete any existing pi images
+Delete any existing pi images (eg pi-gen)
+
 ```
 docker image ls
 docker image rm -f <image-id>
 ```
 
 Clean the pi-gen repo
+
 ```
 cd pi-gen
 git clean -xnfd  # dry run
