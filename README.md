@@ -25,16 +25,24 @@ FIRST_USER_PASS=raspberry
 PUBKEY_SSH_FIRST_USER='<contents of ~/.ssh/id_ed25519.pub>'
 ```
 
-5. Set the wifi
-
-Wifi comes from the wpa_supplicant, so use wpa_passphrase
-
-```
-wpa_passphrase <ssid> <pass> >> ./copy_in/wpa_supplicant.conf
-```
-
-6. Then, run `build` from the root of the whole repository. This step
+5. Then, run `build` from the root of the whole repository. This step
    starts the build and can take hours.
+
+6. Set the wifi
+
+Wifi comes from the wpa_supplicant. Mount the flashed sd card's boot device, and
+add this file: `./boot/wpa_supplicant.conf`.
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=US
+```
+
+Then run this to append the credentials
+```
+wpa_passphrase <ssid> <pass> >> ./boot/wpa_supplicant.conf
+```
 
 # How to rerun / cleanup
 
@@ -66,5 +74,4 @@ git checkout -- .  # good measure
 
 Checkout origin/arm64 since you're probably flashing an 64-bit pi
 
-Verify the wpa_passphrase is in the same location, and verify that the config
-variables haven't been updated.
+Verify that the config variables haven't been updated.
