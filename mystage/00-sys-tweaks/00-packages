@@ -1,0 +1,8 @@
+ssh sudo ca-certificates
+console-setup keyboard-configuration
+dosfstools
+raspberrypi-sys-mods rpi-eeprom rpifwcrypto
+linux-image-rpi-2712-
+linux-headers-rpi-v8- linux-headers-rpi-2712-
+vim-tiny-
+ssh-import-id-

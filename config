@@ -18,6 +18,13 @@ DISABLE_FIRST_BOOT_USER_RENAME=1
 
 # Wifi
 WPA_COUNTRY=US
+# Unlike the vars above, these are not known to pi-gen's build.sh, which
+# explicitly exports each one it recognises. Run scripts are child processes,
+# so custom vars must be exported here or mystage never sees them.
+# CHANGE
+export WIFI_SSID=
+# CHANGE
+export WIFI_PASS=
 
 # SSH
 ENABLE_SSH=1
@@ -26,4 +33,4 @@ PUBKEY_SSH_FIRST_USER="ssh-ed25519 <pub key> <key name>"
 #PUBKEY_ONLY_SSH=0
 
 # Build
-STAGE_LIST="stage0 stage1 stage2"
+STAGE_LIST="stage0 stage1 mystage"

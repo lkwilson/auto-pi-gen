@@ -10,8 +10,11 @@ which realpath &>/dev/null || error "realpath isn't installed. Install coreutils
 cd "$(dirname "$BASH_SOURCE")" || error "Failed to find auto-pi-gen's dir"
 
 cp config pi-gen/config || error "Failed to copy config file to pi-gen"
-cd pi-gen || error "Failed to find pi-gen's dir"
 
-touch stage3/SKIP stage4/SKIP stage5/SKIP || error "Failed to add stage 3-5 skip"
-touch stage4/SKIP_IMAGES stage5/SKIP_IMAGES || error "Failed to add stage 4-5 image skip"
+# The Dockerfile does `COPY . /pi-gen/`, so a stage outside pi-gen/ would not
+# exist inside the build container. STAGE_LIST in ./config points at mystage.
+rm -rf pi-gen/mystage || error "Failed to clear stale mystage"
+cp -r mystage pi-gen/mystage || error "Failed to copy mystage to pi-gen"
+
+cd pi-gen || error "Failed to find pi-gen's dir"
 ./build-docker.sh || error "Failed to build on ./config"
